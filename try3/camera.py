@@ -7,9 +7,11 @@ from PyQt6.QtCore import QObject, pyqtSignal
 
 
 os.chdir(r'C:\Users\Bruce\Desktop\programming_workshop2\try3')
+#def setup_signal_connections():
+    # Connect the signal to the displayEmotion function
+    #emotion_signal.emotion_detected.connect(displayEmotion)
 
-
-
+#emotion_signal = EmotionSignal()
 #start camera
 cam = cv2.VideoCapture(0)
 file_location = "Photo.jpeg"
@@ -19,6 +21,7 @@ file_location = "Photo.jpeg"
 
 #save photo and constant replace function if program is running
 def imageReplace(browser=None):
+    print("entered imageReplace")
     # true is placeholder for later
     variedCounter = 0
     emotionAction = None
@@ -40,7 +43,7 @@ def imageReplace(browser=None):
                     UI.displayEmotion("😊", "Happy") 
                     pass
                 else:
-                    emotion_signal.emotion_detected.emit("😐", "Neutral")
+                    UI.displayEmotion("😐", "nuetral") 
                     pass
                 
 
@@ -48,7 +51,7 @@ def imageReplace(browser=None):
                 variedCounter += 1
                 
                 if emotionNow == "sad":
-                    UI.displayEmotion("😭", "Sad")
+                    UI.displayEmotion("😐", "sad") 
                     pass
                 elif emotionNow == "angry":
                     UI.displayEmotion("😡", "Angry")
