@@ -1,5 +1,5 @@
 # expressionDoctor
-ReadMe
+
 
 
 The Expression Doctor is an application designed to assist individuals in managing emotion. By leveraging real-time emotion detection and interactive feedback, the application helps users become more aware of their emotional state, particularly anger, and helps them take back control.
