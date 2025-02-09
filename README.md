@@ -25,7 +25,7 @@ Compatible with Windows, macOS, and Linux.
 
 How It Works
 Start the Application:
-Launch the application and click the "START" button to begin
+Launch the UI application and click the "START" button to begin
 Emotion Detection:
 The application uses your webcam to analyze your facial expressions 
 Anger Meter:
