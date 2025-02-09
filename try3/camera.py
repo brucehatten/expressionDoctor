@@ -2,11 +2,13 @@ import cv2
 import readFace
 import os
 from time import sleep
+import UI
+from PyQt6.QtCore import QObject, pyqtSignal
 
 
 os.chdir(r'C:\Users\Bruce\Desktop\programming_workshop2\try3')
 
-COUNTERBREAK = 3
+
 
 #start camera
 cam = cv2.VideoCapture(0)
@@ -20,7 +22,7 @@ def imageReplace(browser=None):
     # true is placeholder for later
     variedCounter = 0
     emotionAction = None
-
+    COUNTERBREAK= 5
     while (True):
         if (browser == None) or browser.isBad():
             status, photo = cam.read()
@@ -29,16 +31,16 @@ def imageReplace(browser=None):
 
             emotionNow = readFace.readF(file_location)
 
-            if emotionNow in ["happy", "nuetral"]:
+            if emotionNow in ["happy", "neutral"]:
                 variedCounter -= 1
                 if variedCounter < 0:
                     variedCounter = 0
                 
                 if emotionNow == "happy":
-                    #happy placeholder action to ui image
+                    UI.displayEmotion("😊", "Happy") 
                     pass
                 else:
-                    #neutral placeholder action to ui image
+                    emotion_signal.emotion_detected.emit("😐", "Neutral")
                     pass
                 
 
@@ -46,13 +48,13 @@ def imageReplace(browser=None):
                 variedCounter += 1
                 
                 if emotionNow == "sad":
-                    #sad placeholder action to ui image
+                    UI.displayEmotion("😭", "Sad")
                     pass
                 elif emotionNow == "angry":
-                    #angry placeholder action to ui image
+                    UI.displayEmotion("😡", "Angry")
                     pass
                 else:
-                    #disgust placeholder action to ui image
+                    UI.displayEmotion("🤢", "Disgusted")
                     pass
                 
                 if variedCounter >= COUNTERBREAK:
@@ -62,6 +64,8 @@ def imageReplace(browser=None):
 
             else:
                 print("Emotion not detected")
+
+            UI.counterBar(variedCounter, COUNTERBREAK)
         
         
              
